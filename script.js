@@ -2,6 +2,8 @@ let input_tarefa = document.getElementById("tarefa");
 let input_data = document.getElementById("data");
 let table_tasks = document.getElementById("table_tasks");
 let insert = document.getElementById("Inserir");
+let consult = document.getElementById("consultar");
+let remove = document.getElementById("remover");
 let task_array = [];
 
 insert.addEventListener('click', inserir);
@@ -24,14 +26,23 @@ function inserir() {
             <tr>
                 <td>${task_array[i].Nome}</td>
                 <td>${task_array[i].Data}</td>
-                <td><button id="consultar">Consultar</button></td>
-                <td><button id="remover">Remover</button></td>
+                <td><button id="consultar" onclick="consultarTarefa(${i})">Consultar</button></td>
+                <td><button id="remover" onclick="removerTarefa(${i})">Remover</button></td>
                 <br>
             </tr>
         `
     }
     input_tarefa.value = "";
     input_data.value = "";
+}
+
+function consultarTarefa(num) {
+    input_tarefa.value = task_array[num].Nome;
+    input_data.value = task_array[num].Data;
+}
+
+function deletarTarefa(num) {
+    alert("DEU CERTO!!!");
 }
 
 function ordenarData() {
