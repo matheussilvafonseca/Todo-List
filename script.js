@@ -1,5 +1,6 @@
+let input_tarefa = document.getElementById("tarefa");
+let input_data = document.getElementById("data");
 let table_tasks = document.getElementById("table_tasks");
-let trs = document.getElementsByTagName('tr');
 let insert = document.getElementById("Inserir");
 let task_array = [];
 
@@ -29,6 +30,8 @@ function inserir() {
             </tr>
         `
     }
+    input_tarefa.value = "";
+    input_data.value = "";
 }
 
 function ordenarData() {
