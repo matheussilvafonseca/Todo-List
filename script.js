@@ -1,12 +1,14 @@
 let input_tarefa = document.getElementById("tarefa");
 let input_data = document.getElementById("data");
 let table_tasks = document.getElementById("table_tasks");
+let done = document.getElementById("checkbox");
 let insert = document.getElementById("Inserir");
 let consult = document.getElementById("consultar");
 let remove = document.getElementById("remover");
 let task_array = [];
 
 insert.addEventListener('click', inserir);
+done.addEventListener('click', tarefaFeita);
 
 function inserir() {
     table_tasks.innerHTML = 
@@ -34,6 +36,10 @@ function inserir() {
     }
     input_tarefa.value = "";
     input_data.value = "";
+}
+
+function tarefaFeita(num) {
+    
 }
 
 function consultarTarefa(num) {
