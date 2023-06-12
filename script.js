@@ -39,25 +39,52 @@ function inserir() {
     input_tarefa.value = "";
     input_data.value = "";
 }
-
 function tarefaFeita() {
     for (let i = 0; i < task_array.length; i++) {
         if(input_tarefa.value == task_array[i].Nome && input_data.value == task_array[i].Data){
             tr[i]
         }
-    }
-    
+    } 
 }
-
 function consultarTarefa(num) {
     input_tarefa.value = task_array[num].Nome;
     input_data.value = task_array[num].Data;
 }
-
 function deletarTarefa(num) {
     alert("DEU CERTO!!!");
 }
-
 function ordenarData() {
-    console.log(task_array);
+
+    table_tasks.innerHTML = 
+    `
+        <tr>
+            <th>Tarefa</th>
+            <th>Data</th>
+        </tr>
+    `;
+
+    function comparar(a, b) {
+  if (a.Data < b.Data) {
+    return -1;
+  } else if (a.Data > b.Data) {
+    return 1;
+  }
+  return 0;
+}
+task_array.sort(comparar);
+console.log(task_array);
+
+for (let i = 0; i < task_array.length; i++) {
+    table_tasks.innerHTML +=
+    `
+        <tr id="tr[${i}]">
+            <td>${task_array[i].Nome}</td>
+            <td>${task_array[i].Data}</td>
+            <td><button id="consultar" onclick="consultarTarefa(${i})">Consultar</button></td>
+            <td><button id="remover" onclick="removerTarefa(${i})">Remover</button></td>
+            <br>
+        </tr>
+    `
+}
+ 
 }
