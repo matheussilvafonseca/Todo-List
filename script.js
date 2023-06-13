@@ -38,7 +38,7 @@ function tarefaFeita(num) {
     task_array[num].Check = 0;
     task_array[num].Style = "text-decoration: none";
     checkbox.checked = false;
-    const linha = document.getElementById("tr" + num);
+    let linha = document.getElementById("tr" + num);
     linha.style = "text-decoration: none";
   }
 }
@@ -50,7 +50,7 @@ function consultarTarefa(num) {
 }
 
 function ordenarData() {
-  
+
     cabecalhoTasks();
 
     function comparar(a, b) {
