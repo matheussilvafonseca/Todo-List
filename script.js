@@ -86,7 +86,6 @@ function ordenarData() {
                 <td>${task_array[i].Data}</td>
                 <td><button id="consultar" onclick="consultarTarefa(${i})">Consultar</button></td>
                 <td><button id="remover" onclick="removerTarefa(${i})">Remover</button></td>
-                <br>
             </tr>
         `;
     }
