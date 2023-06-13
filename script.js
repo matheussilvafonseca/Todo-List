@@ -58,17 +58,7 @@ function consultarTarefa(num) {
   input_data.value = task_array[num].Data;
 }
 
-function deletarTarefa(num) {
-  alert("DEU CERTO!!!");
-}
-
 function ordenarData() {
-  console.log(task_array);
-
-  function deletarTarefa(num) {
-    alert("DEU CERTO!!!");
-  }
-  function ordenarData() {
     table_tasks.innerHTML = 
     `
         <tr>
@@ -101,4 +91,3 @@ function ordenarData() {
         `;
     }
   }
-}
