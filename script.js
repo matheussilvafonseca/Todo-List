@@ -18,6 +18,15 @@ function inserir() {
   let date = document.getElementById("data").value;
   let tarefa = { Nome: task, Data: date, Check: 0, Style: "text-decoration: none;" };
 
+  for (let i = 0; i < task_array.length; i++) {
+    if(input_tarefa.value == task_array[i].Nome && input_data.value == task_array[i].Data){
+      alert("DADOS JÁ EXISTEM");
+      return;
+    } else {
+      continue;
+    }
+  }
+
   cabecalhoTasks();
 
   task_array.push(tarefa);
@@ -26,8 +35,9 @@ function inserir() {
   
   input_tarefa.value = "";
   input_data.value = "";
-  
+
 }
+
 
 function tarefaFeita(num) {
 
