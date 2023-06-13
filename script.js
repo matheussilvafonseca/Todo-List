@@ -45,9 +45,12 @@ function tarefaFeita(num) {
   let checkbox = document.getElementById("checkbox" + num);
   if (checkbox.checked) {
     let check_condition = {Check: 1};
+    task_array[num].push(check_condition);
     const linha = document.getElementById("tr" + num);
     linha.style = "text-decoration: line-through";
   } else {
+    let check_condition = {Check: 1};
+    task_array[num].push(check_condition);
     const linha = document.getElementById("tr" + num);
     linha.style = "text-decoration: none";
   }
