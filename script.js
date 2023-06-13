@@ -21,16 +21,16 @@ function inserir() {
     `;
   let task = document.getElementById("tarefa").value;
   let date = document.getElementById("data").value;
-  let tarefa = { Nome: task, Data: date };
+  let tarefa = { Nome: task, Data: date, Check: 0, Style: "text-decoration: none;" };
   task_array.push(tarefa);
   for (let i = 0; i < task_array.length; i++) {
     table_tasks.innerHTML += 
         `
             <div id="div_tr${i}">
-                <tr id="tr${i}">
+                <tr id="tr${i}" style="${task_array[i].Style}">
                     <td>${task_array[i].Nome}</td>
                     <td>${task_array[i].Data}</td>
-                    <td><input type="checkbox" id="checkbox${i}" onclick="tarefaFeita(${i})"></td>
+                    <td><input type="checkbox" id="checkbox${i}" onclick="tarefaFeita(${i}) " ${task_array[i].Check}></td>
                     <td><button id="consultar" onclick="consultarTarefa(${i})">Consultar</button></td>
                     <td><button id="remover" onclick="removerTarefa(${i})">Remover</button></td>
                 </tr>
@@ -43,18 +43,21 @@ function inserir() {
 
 function tarefaFeita(num) {
   let checkbox = document.getElementById("checkbox" + num);
-  if (checkbox.checked) {
-    let check_condition = {Check: 1};
-    task_array[num].push(check_condition);
-    const linha = document.getElementById("tr" + num);
+  if (task_array[num].Check == 0) {
+    task_array[num].Check = "checked";
+    task_array[num].Style = "text-decoration: line-through";
+    checkbox.checked = true;
+    let linha = document.getElementById("tr" + num);
     linha.style = "text-decoration: line-through";
   } else {
-    let check_condition = {Check: 1};
-    task_array[num].push(check_condition);
+    task_array[num].Check = 0;
+    task_array[num].Style = "text-decoration: none";
+    checkbox.checked = false;
     const linha = document.getElementById("tr" + num);
     linha.style = "text-decoration: none";
   }
 }
+
 
 function consultarTarefa(num) {
   input_tarefa.value = task_array[num].Nome;
