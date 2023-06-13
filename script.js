@@ -10,6 +10,8 @@ let task_array = [];
 insert.addEventListener("click", inserir);
 order.addEventListener("click", ordenarData);
 
+cabecalhoTasks();
+
 function inserir() {
 
   let task = document.getElementById("tarefa").value;
@@ -24,29 +26,49 @@ function inserir() {
   
   input_tarefa.value = "";
   input_data.value = "";
+  
 }
 
 function tarefaFeita(num) {
+
   let checkbox = document.getElementById("checkbox" + num);
+
   if (task_array[num].Check == 0) {
+
     task_array[num].Check = "checked";
     task_array[num].Style = "text-decoration: line-through";
     checkbox.checked = true;
     let linha = document.getElementById("tr" + num);
     linha.style = "text-decoration: line-through";
+
   } else {
+
     task_array[num].Check = 0;
     task_array[num].Style = "text-decoration: none";
     checkbox.checked = false;
     let linha = document.getElementById("tr" + num);
     linha.style = "text-decoration: none";
+
   }
+
 }
 
 
 function consultarTarefa(num) {
+
   input_tarefa.value = task_array[num].Nome;
   input_data.value = task_array[num].Data;
+
+}
+
+function removerTarefa(num) {
+
+  task_array.splice(num, 1);
+
+  cabecalhoTasks();
+
+  conteudoTasks();
+
 }
 
 function ordenarData() {
@@ -61,13 +83,15 @@ function ordenarData() {
       }
       return 0;
     }
+
     task_array.sort(comparar);
-    console.log(task_array);
 
     conteudoTasks();
+
 }
 
 function cabecalhoTasks() {
+
   table_tasks.innerHTML = 
     `
         <tr>
@@ -76,9 +100,11 @@ function cabecalhoTasks() {
             <th>Feito</th>
         </tr>
     `;
+
 }
 
 function conteudoTasks() {
+
   for (let i = 0; i < task_array.length; i++) {
     table_tasks.innerHTML += 
         `
@@ -93,4 +119,5 @@ function conteudoTasks() {
             </div>
         `;
   }
+
 }
