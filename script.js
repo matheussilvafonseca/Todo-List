@@ -54,7 +54,6 @@ function deletarTarefa(num) {
     alert("DEU CERTO!!!");
 }
 function ordenarData() {
-
     table_tasks.innerHTML = 
     `
         <tr>
@@ -62,7 +61,6 @@ function ordenarData() {
             <th>Data</th>
         </tr>
     `;
-
     function comparar(a, b) {
   if (a.Data < b.Data) {
     return -1;
@@ -72,8 +70,6 @@ function ordenarData() {
   return 0;
 }
 task_array.sort(comparar);
-console.log(task_array);
-
 for (let i = 0; i < task_array.length; i++) {
     table_tasks.innerHTML +=
     `
@@ -85,6 +81,5 @@ for (let i = 0; i < task_array.length; i++) {
             <br>
         </tr>
     `
-}
- 
+} 
 }
