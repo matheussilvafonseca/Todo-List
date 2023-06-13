@@ -11,32 +11,17 @@ insert.addEventListener("click", inserir);
 order.addEventListener("click", ordenarData);
 
 function inserir() {
-  table_tasks.innerHTML = 
-    `
-        <tr>
-            <th>Tarefa</th>
-            <th>Data</th>
-            <th>Feito</th>
-        </tr>
-    `;
+
   let task = document.getElementById("tarefa").value;
   let date = document.getElementById("data").value;
   let tarefa = { Nome: task, Data: date, Check: 0, Style: "text-decoration: none;" };
+
+  cabecalhoTasks();
+
   task_array.push(tarefa);
-  for (let i = 0; i < task_array.length; i++) {
-    table_tasks.innerHTML += 
-        `
-            <div id="div_tr${i}">
-                <tr id="tr${i}" style="${task_array[i].Style}">
-                    <td>${task_array[i].Nome}</td>
-                    <td>${task_array[i].Data}</td>
-                    <td><input type="checkbox" id="checkbox${i}" onclick="tarefaFeita(${i}) " ${task_array[i].Check}></td>
-                    <td><button id="consultar" onclick="consultarTarefa(${i})">Consultar</button></td>
-                    <td><button id="remover" onclick="removerTarefa(${i})">Remover</button></td>
-                </tr>
-            </div>
-        `;
-  }
+
+  conteudoTasks();
+  
   input_tarefa.value = "";
   input_data.value = "";
 }
@@ -65,13 +50,8 @@ function consultarTarefa(num) {
 }
 
 function ordenarData() {
-    table_tasks.innerHTML = 
-    `
-        <tr>
-            <th>Tarefa</th>
-            <th>Data</th>
-        </tr>
-    `;
+  
+    cabecalhoTasks();
 
     function comparar(a, b) {
       if (a.Data < b.Data) {
@@ -84,15 +64,33 @@ function ordenarData() {
     task_array.sort(comparar);
     console.log(task_array);
 
-    for (let i = 0; i < task_array.length; i++) {
-        table_tasks.innerHTML += 
+    conteudoTasks();
+}
+
+function cabecalhoTasks() {
+  table_tasks.innerHTML = 
+    `
+        <tr>
+            <th>Tarefa</th>
+            <th>Data</th>
+            <th>Feito</th>
+        </tr>
+    `;
+}
+
+function conteudoTasks() {
+  for (let i = 0; i < task_array.length; i++) {
+    table_tasks.innerHTML += 
         `
-            <tr id="tr[${i}]">
-                <td>${task_array[i].Nome}</td>
-                <td>${task_array[i].Data}</td>
-                <td><button id="consultar" onclick="consultarTarefa(${i})">Consultar</button></td>
-                <td><button id="remover" onclick="removerTarefa(${i})">Remover</button></td>
-            </tr>
+            <div id="div_tr${i}">
+                <tr id="tr${i}" style="${task_array[i].Style}">
+                    <td>${task_array[i].Nome}</td>
+                    <td>${task_array[i].Data}</td>
+                    <td><input type="checkbox" id="checkbox${i}" onclick="tarefaFeita(${i}) " ${task_array[i].Check}></td>
+                    <td><button id="consultar" onclick="consultarTarefa(${i})">Consultar</button></td>
+                    <td><button id="remover" onclick="removerTarefa(${i})">Remover</button></td>
+                </tr>
+            </div>
         `;
-    }
   }
+}
