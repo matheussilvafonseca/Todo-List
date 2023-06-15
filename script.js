@@ -116,25 +116,4 @@ function conteudoTasks() {
             </div>
         `;
   }
-
-  function comparar(a, b) {
-    if (a.Data < b.Data) {
-      return -1;
-    } else if (a.Data > b.Data) {
-      return 1;
-    }
-    return 0;
-  }
-  task_array.sort(comparar);
-  for (let i = 0; i < task_array.length; i++) {
-    table_tasks.innerHTML += `
-        <tr id="tr[${i}]">
-            <td>${task_array[i].Nome}</td>
-            <td>${task_array[i].Data}</td>
-            <td><button id="consultar" onclick="consultarTarefa(${i})">Consultar</button></td>
-            <td><button id="remover" onclick="removerTarefa(${i})">Remover</button></td>
-            <br>
-        </tr>
-    `;
-  }
 }
