@@ -24,18 +24,17 @@ function inserir() {
 
   for (let i = 0; i < task_array.length; i++) {
     if (
-      input_tarefa.value == task_array[i].Nome &&
-      input_data.value == task_array[i].Data
+      (input_tarefa.value == task_array[i].Nome &&
+      input_data.value == task_array[i].Data) || (input_tarefa.value == "" ||
+      input_data.value == "")
     ) {
-      alert("DADOS JÁ EXISTEM");
+      alert("NÃO FOI POSSÍVEL INSERIR OS DADOS");
       return;
-    } else {
-      continue;
     }
   }
 
   cabecalhoTasks();
-
+  
   task_array.push(tarefa);
 
   conteudoTasks();
